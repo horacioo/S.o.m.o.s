@@ -1,0 +1,21 @@
+#telaDeColetas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3000;
+  border: 1px solid rgb(208, 208, 208);
+  background-color: white;
+  min-height: 50vh;
+  padding: 2vw;
+  border-radius: 0.5vw;
+}
+#telaDeColetas .btn {
+  background-color: red;
+  border: 1px solid red;
+  color: white;
+  margin: 2vw;
+}
+#telaDeColetas table {
+  margin-top: 1.7vw;
+}/*# sourceMappingURL=style_cad.css.map */

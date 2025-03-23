@@ -1,0 +1,94 @@
+/* Reset básico de CSS */
+
+/* Remove todas as margens e preenchimentos */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove a formatação padrão de fontes */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dt, dd, figure, blockquote, pre {
+  font-size: 100%;
+  font-family: inherit;
+  line-height: 1;
+}
+
+/* Remove a formatação padrão de listas e links */
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove a borda padrão de inputs, selects e outros elementos de formulário */
+input,
+button,
+textarea,
+select {
+  border: none;
+  outline: none;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Normaliza os estilos de tabela */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Desativa o estilo de links visitados */
+a:visited {
+  color: inherit;
+}
+
+/* Remover a formatação de campo de formulário (botões, campos de texto, etc) */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  background-color: transparent;
+}
+
+/* Remover borda e sombras de elementos de foco */
+:focus {
+  outline: none;
+}
+
+/* Normaliza o comportamento de imagens */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove os espaços ao redor do iframe */
+iframe {
+  border: 0;
+  max-width: 100%;
+}
+
+/* Garantir que todos os elementos ocupem o espaço disponível (se necessário) */
+html, body {
+  width: 100%;
+  height: 100%;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+}
+
+/* Normaliza o scroll */
+html {
+  scroll-behavior: smooth;
+}
