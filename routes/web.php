@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\somos\documentosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,9 +17,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::get('/trabalhos/cadastro', [documentosController::class, 'cadTrab'])->middleware(['auth', 'verified'])->name('TrabalhosCadastros');
-Route::post('/trabalhos/cadastro', [documentosController::class, 'store'])->middleware(['auth', 'verified'])->name('TrabalhosCadastrosSave');
 
 
-
+require __DIR__.'/somos.php';
 require __DIR__.'/auth.php';

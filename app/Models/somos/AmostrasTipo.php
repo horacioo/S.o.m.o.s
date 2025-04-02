@@ -17,6 +17,7 @@ class AmostrasTipo extends Model
         'tipoAmostra',
         'coordenadas',
         'tipoCoordenadas',
+        'ligacao',
         'data',
     ];
 

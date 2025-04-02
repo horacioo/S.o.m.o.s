@@ -5,27 +5,25 @@ namespace App\Models\somos;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class amostras extends Model
+class amostra extends Model
 {
     use HasFactory;
-
-    protected $table = 'coordenadas';
 
     protected $fillable = [
         'latitude',
         'longitude',
-        'documento_id',
+        'ligacao',
         'tipo_de_coleta_id',
     ];
 
-    
+    // Definindo os relacionamentos
     public function documento()
     {
-        return $this->belongsTo(Documento::class);
+        return $this->belongsTo(Documento::class); // Relacionamento com a tabela 'documentos'
     }
 
     public function tipoDeColeta()
     {
-        return $this->belongsTo(TipoDeColeta::class, 'tipo_de_coleta_id');
+        return $this->belongsTo(TipoDeColeta::class); // Relacionamento com a tabela 'tipo_de_coleta'
     }
 }
