@@ -15,7 +15,7 @@
 
 
         <h2>Cadastro de Documentos</h2>
-        <form id="formularioBase" action="{{ route('trabalhos.api.cadastro') }}" method="POST">
+        <form id="formularioBase" action="{{ route('trabalhos.api.salva') }}" method="POST">
             <input type="hidden" name="usuario" id="usuario" value="{{ $usuario }}">
             <input type="hidden" name="csrfToken" id="csrfToken" value="{{ csrf_token() }}">
             <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -142,8 +142,8 @@
 
 
                 <div class="col-md-2">
-                    <label class="form-label"  for="data_deposito">tipo de Coordenadas</label>
-                    <select required='require'  class="form-control" id="tipoCorrdenada">
+                    <label class="form-label" for="data_deposito">tipo de Coordenadas</label>
+                    <select required='require' class="form-control" id="tipoCorrdenada">
                         <option value="1"> Decimal </option>
                         <option value="2">Grau, Minuto, Decimal(Gmd) </option>
                         <option value="3">Grau, Minuto, Segundo Decimal(gms) </option>
@@ -191,11 +191,11 @@
 
             // Obtendo os dados do sessionStorage e convertendo de volta para um array
             var coletasArray = JSON.parse(window.sessionStorage.getItem("Amostras"));
-            console.log(coletasArray);
+            //console.log(coletasArray);
 
             // Pegando todos os campos do formulário e serializando
             var formularioData = jQuery(this).serializeArray();
-            console.log(formularioData);
+            ///console.log(formularioData);
 
             // Adicionando coletasArray aos dados do formulário com a chave 'coletas'
             formularioData.push({
@@ -207,7 +207,7 @@
 
             // Obtendo o valor da ação do formulário
             var actionValue = jQuery("#formularioBase").attr("action");
-            console.log(actionValue);
+            ////console.log(actionValue);
             var url = actionValue; // Defina a URL correta aqui
 
             var csrfToken = jQuery("#csrfToken").val(); // Defina o CSRF Token correto aqui
@@ -259,38 +259,33 @@
     <!---------------------------------------->
 
     <script>
-        $(document).ready(function() {
+        jQuery(document).ready(function() {
 
             let amostras = [];
             window.sessionStorage.setItem("Amostras", amostras);
 
-            var csrfToken = $("meta[name='csrf-token']").attr("content");
+            var csrfToken = jQuery("meta[name='csrf-token']").attr("content");
 
             var url = "{{ route('trabalhos.api.cadastro') }}"; // Define a URL correta
             console.log(url);
 
-            $("#telaDeColetas").hide();
+            jQuery("#telaDeColetas").hide();
 
-            $("#coleta").change(function() {
-                if ($(this).val() === "1") { // Se "sim" (valor 1) for selecionado
-                    $("#telaDeColetas").show();
+
+
+
+            jQuery("#coleta").change(function() {
+                console.clear();
+                console.log(jQuery(this).val());
+
+                if (jQuery(this).val() === "1") { // Se "sim" (valor 1) for selecionado
+                    jQuery("#telaDeColetas").show();
                 } else { // Se "não" (valor 0) for selecionado
-                    $("#telaDeColetas").hide();
+                    jQuery("#telaDeColetas").hide();
                 }
             });
 
-
-
-
-
-
-
-
-
-
-
-
-            $('#coletasForm').submit(function(e) {
+            jQuery('#coletasForm').submit(function(e) {
                 e.preventDefault(); // Corrigido de e.eventprevent();
 
                 /********************salvando as coletas****************************/
@@ -331,6 +326,16 @@
             });
         });
     </script>
+
+
+
+
+
+
+
+
+
+
     <script>
         jQuery("#close").click(
             function() {
@@ -409,12 +414,12 @@
     <!------------------------------------------>
     <!------------------------------------------>
     <script>
+        /****validando as coordenadas****/
         jQuery(document).ready(function() {
-            var csrfToken = $("meta[name='csrf-token']").attr("content");
+            var csrfToken = jQuery("meta[name='csrf-token']").attr("content");
             var urlValidacao = "{{ route('coord.api.valida') }}";
 
             console.log(jQuery("#tipoCorrdenada").val());
-
 
             function formData() {
                 return {

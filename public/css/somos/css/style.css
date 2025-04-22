@@ -18,4 +18,12 @@
 }
 #telaDeColetas table {
   margin-top: 1.7vw;
+}
+
+nav ul {
+  display: flex;
+  gap: 0.9765625vw;
+}
+nav ul li {
+  list-style: none;
 }/*# sourceMappingURL=style.css.map */

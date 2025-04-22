@@ -5,25 +5,27 @@ namespace App\Models\somos;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class amostra extends Model
+class Amostra extends Model
 {
     use HasFactory;
+
+    protected $table = 'amostras'; // Nome correto da tabela
 
     protected $fillable = [
         'latitude',
         'longitude',
-        'ligacao',
+        'documento_id',
         'tipo_de_coleta_id',
     ];
 
     // Definindo os relacionamentos
     public function documento()
     {
-        return $this->belongsTo(Documento::class); // Relacionamento com a tabela 'documentos'
+        return $this->belongsTo(\App\Models\somos\Documento::class, 'documento_id');
     }
 
     public function tipoDeColeta()
     {
-        return $this->belongsTo(TipoDeColeta::class); // Relacionamento com a tabela 'tipo_de_coleta'
+        return $this->belongsTo(\App\Models\somos\TipoDeColeta::class, 'tipo_de_coleta_id');
     }
 }
