@@ -1,0 +1,433 @@
+@charset "UTF-8";
+@import "../css/cssBase/textRapido/style.css";
+@font-face {
+  font-family: "Anton";
+  src: url("http://127.0.0.1:8000/fonts/Anton/AntonSC-regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "MontThin";
+  src: url("http://127.0.0.1:8000/fonts/montserrat/Montserrat-Thin.ttf") format("truetype");
+}
+/* Reset básico de CSS */
+/* Remove todas as margens e preenchimentos */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove a formatação padrão de fontes */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dt, dd, figure, blockquote, pre {
+  font-size: 100%;
+  font-family: inherit;
+  line-height: 1;
+}
+
+/* Remove a formatação padrão de listas e links */
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove a borda padrão de inputs, selects e outros elementos de formulário */
+input,
+button,
+textarea,
+select {
+  border: none;
+  outline: none;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Normaliza os estilos de tabela */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Desativa o estilo de links visitados */
+a:visited {
+  color: inherit;
+}
+
+/* Remover a formatação de campo de formulário (botões, campos de texto, etc) */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  background-color: transparent;
+}
+
+/* Remover borda e sombras de elementos de foco */
+:focus {
+  outline: none;
+}
+
+/* Normaliza o comportamento de imagens */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove os espaços ao redor do iframe */
+iframe {
+  border: 0;
+  max-width: 100%;
+}
+
+/* Garantir que todos os elementos ocupem o espaço disponível (se necessário) */
+html, body {
+  width: 100%;
+  height: 100%;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+  max-width: 99vw;
+  overflow-x: hidden;
+}
+
+/* Normaliza o scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+nav ul {
+  background-color: red;
+  align-items: center;
+  height: 3.90625vw;
+  margin-top: 3.02734375vw;
+  display: flex;
+  gap: 2.9326171875vw;
+  padding-left: 2.9326171875vw;
+  background: linear-gradient(to bottom, #558ED5 0%, #2C4A6F 100%);
+  font-family: "Anton";
+  color: white;
+  font-size: 1.13671875vw;
+  border-radius: 0.390625vw;
+}
+nav ul li:hover {
+  animation: scale 0.2s forwards;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+    color: #ffffff;
+  }
+  100% {
+    transform: scale(1.3);
+    color: #FF8C2F;
+  }
+}
+@media (min-width: 769px) {
+  #meusCards {
+    display: flex;
+    margin-top: 3.02734375vw;
+    min-height: 49.8046875vw;
+    height: auto;
+    overflow: auto;
+    gap: 3.943359375vw;
+    overflow-x: hidden;
+  }
+  #meusCards ul {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  #meusCards ul #links {
+    width: 4.39453125vw;
+    padding-top: 12.634765625vw;
+  }
+  #meusCards ul #links img {
+    width: 4.39453125vw;
+    height: auto;
+    margin-bottom: 0.6904296875vw;
+  }
+}
+@media (min-width: 769px) and (min-width: 769px) {
+  #meusCards ul .card {
+    border: 0.09765625vw solid #2C4A6F;
+    padding-left: 2.419921875vw;
+    padding-right: 2.419921875vw;
+    padding-top: 2.330078125vw;
+    padding-bottom: 2.1513671875vw;
+    width: 25.00390625vw;
+    height: auto;
+    overflow: auto;
+    gap: 1.1650390625vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.0751953125vw;
+    border: 0.1953125vw solid #1C6073;
+    background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0%/0.4) 90%);
+  }
+  #meusCards ul .card h2 {
+    font-family: "Anton";
+    font-size: 2.6005859375vw;
+    line-height: 1.338;
+    color: #1C6073;
+    text-align: center;
+  }
+  #meusCards ul .card p {
+    font-family: "MontThin";
+    font-size: 0.9853515625vw;
+    line-height: 1.65;
+  }
+  #meusCards ul .card img {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (min-width: 769px) and (max-width: 768.5px) {
+  #meusCards ul .card {
+    border: 0.09765625vw solid #2C4A6F;
+    padding-left: 2.419921875vw;
+    padding-right: 2.419921875vw;
+    padding-top: 3.330078125vw;
+    padding-bottom: 3.1513671875vw;
+    width: 99%;
+    height: auto;
+    overflow: auto;
+    gap: 1.1650390625vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.0751953125vw;
+    border: 0.1953125vw solid #1C6073;
+    background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0%/0.4) 90%);
+    margin-bottom: 3vh;
+  }
+  #meusCards ul .card h2 {
+    font-family: "Anton";
+    font-size: 8.6005859375vw;
+    line-height: 1.338;
+    color: #1C6073;
+    text-align: center;
+  }
+  #meusCards ul .card p {
+    font-family: "MontThin";
+    font-size: 2.9853515625vw;
+    line-height: 1.65;
+  }
+  #meusCards ul .card img {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-width: 768.5px) {
+  #meusCards {
+    display: flex;
+    margin-top: 3.02734375vw;
+    min-height: 49.8046875vw;
+    height: auto;
+    overflow: auto;
+    gap: 3.943359375vw;
+    overflow-x: hidden;
+  }
+  #meusCards ul {
+    display: flex;
+    flex-direction: column;
+  }
+  #meusCards ul #links {
+    width: 100%;
+    margin-right: 3.943359375vw;
+    padding: 4vw;
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+  }
+  #meusCards ul #links img {
+    width: 9.39453125vw;
+    height: auto;
+  }
+}
+@media (max-width: 768.5px) and (min-width: 769px) {
+  #meusCards ul .card {
+    border: 0.09765625vw solid #2C4A6F;
+    padding-left: 2.419921875vw;
+    padding-right: 2.419921875vw;
+    padding-top: 2.330078125vw;
+    padding-bottom: 2.1513671875vw;
+    width: 25.00390625vw;
+    height: auto;
+    overflow: auto;
+    gap: 1.1650390625vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.0751953125vw;
+    border: 0.1953125vw solid #1C6073;
+    background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0%/0.4) 90%);
+  }
+  #meusCards ul .card h2 {
+    font-family: "Anton";
+    font-size: 2.6005859375vw;
+    line-height: 1.338;
+    color: #1C6073;
+    text-align: center;
+  }
+  #meusCards ul .card p {
+    font-family: "MontThin";
+    font-size: 0.9853515625vw;
+    line-height: 1.65;
+  }
+  #meusCards ul .card img {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-width: 768.5px) and (max-width: 768.5px) {
+  #meusCards ul .card {
+    border: 0.09765625vw solid #2C4A6F;
+    padding-left: 2.419921875vw;
+    padding-right: 2.419921875vw;
+    padding-top: 3.330078125vw;
+    padding-bottom: 3.1513671875vw;
+    width: 99%;
+    height: auto;
+    overflow: auto;
+    gap: 1.1650390625vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.0751953125vw;
+    border: 0.1953125vw solid #1C6073;
+    background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0%/0.4) 90%);
+    margin-bottom: 3vh;
+  }
+  #meusCards ul .card h2 {
+    font-family: "Anton";
+    font-size: 8.6005859375vw;
+    line-height: 1.338;
+    color: #1C6073;
+    text-align: center;
+  }
+  #meusCards ul .card p {
+    font-family: "MontThin";
+    font-size: 2.9853515625vw;
+    line-height: 1.65;
+  }
+  #meusCards ul .card img {
+    width: 100%;
+    height: auto;
+  }
+}
+body {
+  width: 100vw;
+  padding-left: 3.90625vw;
+  padding-right: 3.90625vw;
+  padding-top: 3.3203125vw;
+  background-image: url("http://127.0.0.1:8000/img/home/fundao.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+body header {
+  background-image: url("http://127.0.0.1:8000/img/home/topo.jpg");
+  width: 92.1875vw;
+  height: 43.75vw;
+  border-radius: 1.85546875vw;
+  position: relative;
+  background-color: rgb(0, 212, 219);
+  background-size: cover;
+}
+body header #horse {
+  position: absolute;
+  top: 37.79296875vw;
+  left: 0.390625vw;
+  height: 7.71484375vw;
+  width: auto;
+}
+body header h1 {
+  position: absolute;
+  top: 8.59375vw;
+  left: 4.8828125vw;
+  max-width: 33.0078125vw;
+  display: block;
+  color: white;
+  text-shadow: 0 0 28px #ffffff;
+}
+body header h1 .tit {
+  font-size: 8.65625vw;
+  font-family: "Anton";
+  display: block;
+}
+body header h1 .sub {
+  font-family: "MontThin";
+  color: white;
+  display: block;
+  font-weight: lighter;
+  font-size: 8.7421875vw;
+}
+body header #subtitulo {
+  color: #2C4A6F;
+  font-family: "MontThin";
+  text-shadow: 0 0 28px #ffffff;
+  position: absolute;
+  top: 27.83203125vw;
+  left: 4.8828125vw;
+  background-color: rgba(255, 255, 255, 0.69);
+  padding-left: 1.7578125vw;
+  padding-right: 1.7578125vw;
+  padding-top: 2.05078125vw;
+  padding-bottom: 2.05078125vw;
+  border-radius: 0.9765625vw;
+  font-size: 1.8203125vw;
+  max-width: 33.0078125vw;
+  line-height: 128.4%;
+}
+
+@media (min-width: 769px) {
+  #descricaoProjeto {
+    margin-top: 3.02734375vw;
+    height: auto;
+    min-height: 30.6640625vw;
+    overflow: visible;
+    height: auto;
+    display: block;
+    position: relative;
+  }
+  #descricaoProjeto p {
+    color: #2C4A6F;
+    font-family: "MontThin";
+    width: 53.515625vw;
+    height: 25.78125vw;
+    line-height: 2.4;
+    font-size: 1.281875vw;
+    text-align: justify;
+  }
+  #descricaoProjeto #imgCentro {
+    width: 34.08203125vw;
+    height: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+@media (max-width: 768.5px) {
+  #descricaoProjeto {
+    margin-top: 3.02734375vw;
+    font-size: 2.9853515625vw;
+    font-family: "MontThin";
+    color: #2C4A6F;
+  }
+  #descricaoProjeto p {
+    line-height: 1.65;
+  }
+  #descricaoProjeto #imgCentro {
+    width: 100%;
+  }
+}/*# sourceMappingURL=desktop.css.map */

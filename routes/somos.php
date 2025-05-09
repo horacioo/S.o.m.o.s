@@ -5,7 +5,7 @@ use App\Http\Controllers\somos\documentosController;
 use App\Http\Controllers\somos\coordenadasController;
 
 
-
+Route::get('/', function () { return view('somos.home'); });
 
 
 Route::middleware('auth')->group(function () {
@@ -32,16 +32,27 @@ Route::middleware('auth')->group(function () {
     Route::post('/api/trabalhos/salva', [documentosController::class, 'store'])->middleware(['auth', 'verified'])->name('trabalhos.api.salva');
 
 
-    /**pega coordenadas que foram desenhadas**/
-    ////Route::get('/api/coordenadas/buscaDesenhos', [coordenadasController::class, 'pesquisaDesenho'])->middleware(['auth', 'verified'])->name('coord.api.selecionados');
-
-    //Route::get('/api/coordenadas/buscaDesenhos',[coordenadasController::class, 'pesquisaDesenho'])->middleware(['auth', 'verified'])->name('coord.api.selecionados');
-
-    Route::get('/bloco/mapaselecao/{coord}', [coordenadasController::class, 'pesquisaDesenho'])->middleware(['auth', 'verified'])->name('coord.pedaco.selecao');
-
     Route::get('/bloco/desenhaMapa', [coordenadasController::class, 'desenha'])->middleware(['auth', 'verified'])->name('coord.pedaco.desenha');
 
     ###aqui  eu vou  buscar o formulário de coordenadas decimal
     Route::get('/bloco/decimal', [coordenadasController::class, 'decimal'])->middleware(['auth', 'verified'])->name('coord.pedaco.decimal');
+
+    //Lista meus trabalhos para  editar/ 
+    Route::get('trabalhos/minhaLista', [documentosController::class, 'minhalistadeTrabalhos'])->name('minhaListaEdit'); // Confirme se esse controller está correto
+
+
+    Route::get('trabalhos/{id}', [documentosController::class, 'trabalhoID'])->name('trabalhoId'); // Confirme se esse controller está correto
+
+
+    Route::post('trabalhos/salvaAlteracao', [documentosController::class, 'UpdateDocumento'])->name('trabalhos.updateData'); // Confirme se esse controller está correto
+
+
+    Route::get('/bloco/mapaselecao/{coord}', [coordenadasController::class, 'pesquisaDesenho'])->middleware(['auth', 'verified'])->name('coord.pedaco.selecao');
+
+
+    Route::get('/bloco/mapaMunicipio/{municipio}', [coordenadasController::class, 'pesquisaMunicipio'])->middleware(['auth', 'verified'])->name('coord.pedaco.municipio');
+
+
+    Route::get('/bloco/mapaDatas/{data}', [coordenadasController::class, 'pesquisaData'])->middleware(['auth', 'verified'])->name('coord.pedaco.data');
 
 });

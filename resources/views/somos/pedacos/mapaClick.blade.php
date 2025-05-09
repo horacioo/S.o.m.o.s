@@ -10,6 +10,8 @@
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css">
 
+
+<h3><b>Clique no quadrado preto no mapa</b></h3>
 <div id="meuMapa">olá xxxxxxx</div>
 
 

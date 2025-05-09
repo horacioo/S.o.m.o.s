@@ -1,0 +1,80 @@
+@media (min-width: 769px) {
+    #textoRapidos {
+        display: flex;
+        margin-top: 3.02734375vw;
+        margin-bottom: 8.10546875vw;
+        gap: 1.5625vw;
+
+        picture {
+            width: 23.828125vw;
+            height: 20.5078125vw;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        #texto {
+            width: 65.8203125vw;
+            height: auto;
+            overflow: auto;
+            text-align: justify;
+            h2 {
+                color: #1c6073;
+                font-size: 2.1484375vw;
+                font-family: "Anton";
+                margin-bottom: 1.46484375vw;
+            }
+            p {
+                font-size: 1.26953125vw;
+                font-family: "MontThin";
+                color: #1c6073;
+                line-height: 132%;
+            }
+        }
+    }
+}
+
+@media (max-width: 768.5px) {
+    #textoRapidos {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3.02734375vw;
+        margin-bottom: 8.10546875vw;
+        gap: 1.5625vw;
+        height: auto;
+        overflow: auto;
+
+        picture {
+            width: 100%;
+            overflow: auto;
+            height: auto;
+            //height: 20.5078125vw;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        #texto {
+            width: 100%;
+            height: auto;
+            overflow: auto;
+            text-align: justify;
+            h2 {
+                color: #1c6073;
+                margin-bottom: 1.46484375vw;
+                font-family: "Anton";
+                font-size: 8.6005859375vw;
+                line-height: 1.338;
+            }
+            p {
+                font-size: 1.26953125vw;
+                font-family: "MontThin";
+                color: #1c6073;
+                font-size: 2.9853515625vw;
+                line-height: 1.65;
+            }
+        }
+    }
+}

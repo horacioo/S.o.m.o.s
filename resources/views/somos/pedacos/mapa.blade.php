@@ -12,18 +12,6 @@
 
 
 
-<!---<ul>
-   /* @foreach ($resultados as $item)
-        <li>
-            Latitude: {{ $item->lat }} <br>
-            Longitude: {{ $item->lgnt }} <br>
-            Distância: {{ $item->distancia_km }} km
-            Distância: {{ $item->programa }} km
-
-        </li>
-    @endforeach*/
-</ul>-->
-
 <div id="meuMapa"></div>
 
 

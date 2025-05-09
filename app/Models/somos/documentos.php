@@ -5,6 +5,7 @@ namespace App\Models\somos;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class documentos extends Model
 {
     use HasFactory;
@@ -18,6 +19,7 @@ class documentos extends Model
         'autor',
         'citacao',
         'orientador',
+        'municipio',
         'data_deposito',
         'link'
     ];
@@ -44,5 +46,21 @@ class documentos extends Model
     public function amostras()
     {
         return $this->hasMany(Amostra::class, 'coleta', 'id');
+    }
+
+
+       /**
+     * Relação com a tabela "keywords"
+     */
+    public function keywords()
+    {
+        return $this->hasMany(keywords::class, 'documento_id', 'id');
+    }
+
+
+    
+    public function Cidade()
+    {
+        return $this->belongsTo(cidades::class, 'municipio', 'id');
     }
 }

@@ -1,0 +1,127 @@
+@import "../css/reset";
+@import "../css/cssBase/menu/menu";
+@import "../css/cssBase/card/style";
+@import "../css/cssBase/textRapido/style.css";
+body {
+    width: 100vw;
+    padding-left: 3.90625vw;
+    padding-right: 3.90625vw;
+    padding-top: 3.3203125vw;
+    background-image: url($url + "img/home/fundao.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    header {
+        background-image: url($url + "img/home/topo.jpg");
+        width: 92.1875vw;
+        height: 43.75vw;
+        border-radius: 1.85546875vw;
+        position: relative;
+        background-color: rgb(0, 212, 219);
+        background-size: cover;
+        #horse {
+            position: absolute;
+            top: 37.79296875vw;
+            left: 0.390625vw;
+            height: 7.71484375vw;
+            width: auto;
+        }
+        h1 {
+            position: absolute;
+            top: 8.59375vw;
+            left: 4.8828125vw;
+            max-width: 33.0078125vw;
+            display: block;
+            color: white;
+            text-shadow: 0 0 28px #ffffff;
+            .tit {
+                font-size: 8.65625vw;
+                font-family: "Anton";
+                display: block;
+            }
+            .sub {
+                font-family: "MontThin";
+                color: white;
+                display: block;
+                font-weight: lighter;
+                font-size: 8.7421875vw;
+            }
+        }
+
+        #subtitulo {
+            color: $azulTexto;
+            font-family: "MontThin";
+            text-shadow: 0 0 28px #ffffff;
+            position: absolute;
+            top: 27.83203125vw;
+            left: 4.8828125vw;
+            background-color: rgba(255, 255, 255, 0.69);
+            padding-left: 1.7578125vw;
+            padding-right: 1.7578125vw;
+            padding-top: 2.05078125vw;
+            padding-bottom: 2.05078125vw;
+            border-radius: 0.9765625vw;
+            font-size: 1.8203125vw;
+            max-width: 33.0078125vw;
+            line-height: 128.4%;
+        }
+    }
+}
+
+@media (min-width: 769px) {
+    #descricaoProjeto {
+        margin-top: 3.02734375vw;
+        //border: 1px solid red;
+        height: auto;
+        min-height: 30.6640625vw;
+        overflow: visible;
+        height: auto;
+        display: block;
+        position: relative;
+
+        p {
+            color: $azulTexto;
+            font-family: "MontThin";
+            width: 53.515625vw;
+            height: 25.78125vw;
+            line-height: 2.4;
+            font-size: 1.281875vw;
+            text-align: justify;
+        }
+        #imgCentro {
+            width: 34.08203125vw;
+            height: auto;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+}
+
+@media (max-width: 768.5px) {
+    #descricaoProjeto {
+        margin-top: 3.02734375vw;
+        font-size: 2.9853515625vw;
+       
+        font-family: "MontThin";
+        color: $azulTexto;
+
+        //height: auto;
+        //min-height: 30.6640625vw;
+        //overflow: visible;
+        //height: auto;
+        //display: flex;
+        //position: relative;
+        //flex-direction: row;
+        p { line-height: 1.65;
+            
+        }
+
+        #imgCentro {
+            width:100%;
+            //height: auto;
+            //top: 0;
+            //right: 0;
+        }
+    }
+}

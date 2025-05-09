@@ -27,13 +27,13 @@ inner join keywords as kw on kw.documento_id = d.id
 inner join users as us on us.id = d.user
 inner join amostras as am on am.documento_id = d.id
 inner join cidades as cd on cd.id = d.municipio 
-*********************/
+ *********************/
 /*************************************
 SELECT dms_para_decimal('22° 57.115\' S') as xx ,
 dms_para_decimal('22° 57.115\' S') as xx2, 
 dms_para_decimal('22° 57\' 06.9" S') as xx3
 FROM pesquisardadosdetrabalho
-*************************************/
+ *************************************/
 
 class documentosController extends Controller
 {
@@ -42,10 +42,95 @@ class documentosController extends Controller
 
 
 
-    public function pesquisa(){
-        $cidades = cidades::all();
-       return view('somos.trabalhos.pesquisa',compact('cidades'));
+
+
+
+
+    function UpdateDocumento(Request $request) {
+
+        
+        $id = $request->id;
+        $programa = $request->programa;
+        $tipo_do_documento = $request->tipo_do_documento;
+        $municipio = $request->cidade;
+        $titulo = $request->titulo;
+        $autor = $request->autor;
+        $citacao = $request->citacao;
+        $orientador = $request->orientador;
+        $data_deposito = $request->data_deposito;
+
+
+        
+        
+        $keywords=$request->keywords;
+        $link = $request->link;
+
+        $doc = new documentos();
+        $documento = $doc::find($id);
+
+        $documento->programa = $programa;
+        $documento->tipo_do_documento = $tipo_do_documento;
+        $documento->municipio = $municipio;
+        $documento->titulo = $titulo;
+        $documento->autor = $autor;
+        $documento->link = $link;
+        $documento->citacao = $citacao;
+        $documento->orientador = $orientador;
+        $documento->data_deposito = $data_deposito;
+
+        $documento->update();
+
+        return response()->json( $request->all() );
     }
+
+
+
+
+    public function trabalhoID($id)
+    {
+        $user = Auth::user();
+
+        $token = $user->createToken('MyAppToken')->plainTextToken;
+
+        $usuario = $user->id;
+
+        $doc = documentos::find($id);
+
+        $cities = new cidades();
+        $cidades = $cities->all();
+
+        //  return view('somos.trabalhos.cadastro', compact('trabalhos', 'all', 'amall', 'token', 'info', 'usuario'));
+        return view('somos.trabalhos.dadosDoTrabalho', compact('doc', 'cidades'));
+    }
+
+
+
+    public function minhalistadeTrabalhos()
+    {
+        $user = Auth::user();
+        $token = $user->createToken('MyAppToken')->plainTextToken;
+        $usuario = $user->id;
+        $trabalhos = (new documentos)->newQuery()->where('user', $usuario)->get();
+        return view('somos.trabalhos.MinhaLista', compact('trabalhos'));
+    }
+
+
+
+
+    public function pesquisa()
+    {
+        $cidades = DB::table('pesquisardadosdetrabalho as view')
+        ->join('cidades as ci', 'ci.id', '=', 'view.municipio')
+        ->groupBy('ci.id', 'ci.municipio', 'view.municipio')
+        ->select('view.municipio as id', 'ci.municipio')
+        ->get();
+        return view('somos.trabalhos.pesquisa', compact('cidades'));
+    }
+
+
+
+
+
 
     public function cadTrab()
     {
@@ -73,6 +158,7 @@ class documentosController extends Controller
     {
 
         $dados = $request->all();
+
 
         $info = new documentos();
         $info->programa = $dados['programa'];
@@ -107,29 +193,30 @@ class documentosController extends Controller
 
 
 
-    private function SalvaCoordenadas($dados) {
+    private function SalvaCoordenadas($dados)
+    {
         $json = $dados;
         $array = json_decode($json, true);
 
-        
 
 
-        foreach($array as $a):
+
+        foreach ($array as $a):
             $sample = new amostra();
             $info = array();
-             $info['latitude']=$a['latitude'];
-             $info['longitude']=$a['longitude'];
-             $info['amostra']=$a['amostra'];
-             $info['tipo']=1;
+            $info['latitude'] = $a['latitude'];
+            $info['longitude'] = $a['longitude'];
+            $info['amostra'] = $a['amostra'];
+            $info['tipo'] = 1;
 
-             $sample->latitude            = $a['latitude'];
-             $sample->longitude           = $a['longitude'];
-             $sample->tipo_de_coleta_id   = $a['amostra'];
-             $sample->documento_id        = $this->IdDocumento;
+            $sample->latitude            = $a['latitude'];
+            $sample->longitude           = $a['longitude'];
+            $sample->tipo_de_coleta_id   = $a['amostra'];
+            $sample->documento_id        = $this->IdDocumento;
 
-             $sample->save();
+            $sample->save();
 
-           
+
         endforeach;
         return $dados;
     }
@@ -142,7 +229,7 @@ class documentosController extends Controller
 
 
 
-
+    /*salva palavras chaves**/
     private function PalavrasChaves($palavras, $id)
     {
         // Divide a string de palavras-chave em um array

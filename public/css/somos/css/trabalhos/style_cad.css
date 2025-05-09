@@ -1,4 +1,12 @@
 @charset "UTF-8";
+@font-face {
+  font-family: "Anton";
+  src: url("http://127.0.0.1:8000/fonts/Anton/AntonSC-regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "MontThin";
+  src: url("http://127.0.0.1:8000/fonts/montserrat/Montserrat-Thin.ttf") format("truetype");
+}
 /* Reset básico de CSS */
 /* Remove todas as margens e preenchimentos */
 *,
@@ -86,6 +94,8 @@ html, body {
   height: 100%;
   line-height: 1.5;
   font-family: Arial, sans-serif;
+  max-width: 99vw;
+  overflow-x: hidden;
 }
 
 /* Normaliza o scroll */

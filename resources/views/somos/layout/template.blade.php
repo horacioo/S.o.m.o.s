@@ -5,26 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Título Padrão')</title>
-    <!-- Inclua seus arquivos CSS aqui -->
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-
-
-       <!--C:\xampp\htdocs\somos-app\public\css\somos\css\trabalhos\style_cad.css-->
-    <link rel="stylesheet" href="{{ asset('/css/somos/css/trabalhos/style_cad.css') }}">
     @yield('css')
 
 </head>
 
 <body class="container">
-    <header>
-        <!-- Conteúdo do cabeçalho -->
-        @include('somos.layout.partes.header')
-    </header>
 
-    <nav>@include('somos.layout.partes.menu') </nav>
+
+    <!--<header> /* include('somos.layout.partes.header') */  </header>-->
+
+
+
+
+
+    <!---<nav> /* @include('somos.layout.partes.menu') */ </nav>-->
 
     <main class="container">
         <!-- Conteúdo principal -->

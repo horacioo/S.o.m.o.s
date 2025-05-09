@@ -1,0 +1,184 @@
+@mixin Card() {
+    @media (min-width: 769px) {
+        border: 0.09765625vw solid $azulTexto;
+        padding-left: 2.419921875vw;
+        padding-right: 2.419921875vw;
+        padding-top: 2.330078125vw;
+        padding-bottom: 2.1513671875vw;
+        width: 25.00390625vw;
+        height: auto;
+        overflow: auto;
+        //margin-right: 3.543359375vw;
+        gap: 1.1650390625vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 1.0751953125vw;
+        border: 0.1953125vw solid $azul2;
+
+        background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0% / 0.4) 90%);
+
+        h2 {
+            font-family: "Anton";
+            font-size: 2.6005859375vw;
+            line-height: 1.338;
+            color: $azul2;
+            text-align: center;
+        }
+        p {
+            font-family: "MontThin";
+            font-size: 0.9853515625vw;
+            line-height: 1.65;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    @media (max-width: 768.5px) {
+        border: 0.09765625vw solid $azulTexto;
+        padding-left: 2.419921875vw;
+        padding-right: 2.419921875vw;
+        padding-top: 3.330078125vw;
+        padding-bottom: 3.1513671875vw;
+        width: 99%;
+        height: auto;
+        overflow: auto;
+        gap: 1.1650390625vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 1.0751953125vw;
+        border: 0.1953125vw solid $azul2;
+        background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0% / 0.4) 90%);
+        margin-bottom: 3vh;
+
+        h2 {
+            font-family: "Anton";
+            font-size: 8.6005859375vw;
+            line-height: 1.338;
+            color: $azul2;
+            text-align: center;
+        }
+        p {
+            font-family: "MontThin";
+            font-size: 2.9853515625vw;
+            line-height: 1.65;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 769px) {
+    #meusCards {
+        display: flex;
+        margin-top: 3.02734375vw;
+        min-height: 49.8046875vw;
+        height: auto;
+        overflow: auto;
+        gap: 3.943359375vw;
+        overflow-x: hidden;
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            #links {
+                width: 4.39453125vw;
+                ///margin-right: 3.043359375vw;
+                padding-top: 12.634765625vw;
+                img {
+                    width: 4.39453125vw;
+                    height: auto;
+                    margin-bottom: 0.6904296875vw;
+                }
+            }
+
+            .card {
+                @include Card();
+            }
+        }
+    }
+}
+
+@media (max-width: 768.5px) {
+    #meusCards {
+        display: flex;
+        margin-top: 3.02734375vw;
+        min-height: 49.8046875vw;
+        height: auto;
+        overflow: auto;
+        gap: 3.943359375vw;
+        overflow-x: hidden;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+
+            #links {
+                width: 100%;
+                margin-right: 3.943359375vw;
+                padding: 4vw;
+                display: flex;
+                justify-content: center;
+                gap: 2vw;
+
+                img {
+                    width: 9.39453125vw;
+                    height: auto;
+                    //margin-bottom: 0.6904296875vw;
+                }
+            }
+
+            .card {
+                @include Card();
+            }
+        }
+    }
+}

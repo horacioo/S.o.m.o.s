@@ -1,0 +1,148 @@
+@import './../util/_breakpoints';
+@import './../variaveis/caminhos';
+
+
+@media screen and (min-width: 0) and (max-width:767px) { .desktop{display: none}; }
+@media screen and (min-width: 768px) { .mobile{display: none};  }
+
+
+
+body{
+    //background-image: url("#{$url}/wp-content/themes/seguros/img/fundao.svg");
+    //background-repeat: no-repeat;
+    //background-size: cover;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h7 {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    li {
+        list-style: none;
+    }
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+body {
+    margin: 0px !important;
+    max-width: 99.8vw;
+    overflow-x: clip;
+    width: 100vw;
+}
+
+
+
+
+
+
+
+
+
+@import "../cores/cores";
+
+
+
+
+.open{
+    background-color: $cor2;
+    padding: 1vw;
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-transform: uppercase;
+    padding-top: 1.5vw;
+    animation: alert 1s infinite;
+    font-size: 0.771875vw;
+}
+
+@keyframes alert{
+   0%{ border: 1px solid $cor1; background-color: lighten($cor2,30); }
+   50%{border: 1px solid $cor2; background-color: lighten($cor2,10);}
+   100%{ border: 1px solid $cor1; background-color: lighten($cor2,30); }
+}
+
+
+
+
+/********************************************************************/
+.blink {
+    animation: blink-animation 6s infinite alternate;
+    a{
+        background-color: transparent!important;
+    }
+    &:hover{
+        background-color: $cor2;
+    }
+  }
+  
+  @keyframes blink-animation {
+    0% {  opacity: 1;  }
+    40% {  background-color: $cor3;  }
+    100% {  opacity: 1;  }
+  }
+  
+/********************************************************************/
+
+
+
+
+$cores:$cor1;
+
+::selection {
+    background-color: $cores; /* Cor de fundo da seleção */
+    color: #ffffff; /* Cor do texto selecionado */
+    text-shadow: 0px 0px 2px #000; /* Sombra opcional no texto */
+}
+
+/* Para navegadores baseados em WebKit (como Safari) */
+::-webkit-selection {
+    background-color: $cores;
+    color: #ffffff;
+}
+
+
+
+
+
+/* Para navegadores WebKit */
+::-webkit-scrollbar {
+    width: 1vw; /* Largura da barra de rolagem vertical */
+    height: 1vw; /* Altura da barra de rolagem horizontal */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $cor2; /* Cor do "polegar" da barra de rolagem */
+   //border-radius: 10px; /* Cantos arredondados */
+   // border: 2px solid #ffffff; /* Borda ao redor do polegar */
+}
+
+::-webkit-scrollbar-track {
+    background-color: $cor1; /* Cor do trilho da barra de rolagem */
+    //border-radius: 10px; /* Cantos arredondados */
+}

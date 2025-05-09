@@ -12,6 +12,39 @@ class coordenadasController extends Controller
 
 
 
+    public function pesquisaData($data)
+    {
+        $info  = base64_decode($data);
+
+        $info2 = explode('*', $info);
+
+        $data1 = $info2[0];
+
+        $data2 = $info2[1];
+
+        $resultados =  DB::table('pesquisardadosdetrabalho')->whereBetween('data_deposito', [$data1, $data2])->get();
+
+        return view('somos.pedacos.mapa', compact('resultados'));
+    }
+
+
+
+
+    public function pesquisaMunicipio($municipio)
+    {
+        $resultados = DB::table('pesquisardadosdetrabalho')
+            ->select('*')
+            ->where('municipio', $municipio)
+            ->get();
+
+        return view('somos.pedacos.mapa', compact('resultados'));
+    }
+
+
+
+
+
+
 
 
     public function pesquisaDesenho($coord)
@@ -24,14 +57,10 @@ class coordenadasController extends Controller
         $lng = $infoCoord['lng']; // <- corrigido de $long para $lng
         $raio = $infoCoord['raio_metros'];
 
-        //$lat_ = $this->prepararCoordenadaParaSQL("22° 57.115′ S");
-        //$lng_ = $this->prepararCoordenadaParaSQL("43° 12.629' W");
 
         $lat_ = $this->prepararCoordenadaParaSQL($lat);
         $lng_ = $this->prepararCoordenadaParaSQL($lng);
 
-        //echo "22° 57.115′ S / $lat_ 
-        //<hr>43° 12.629' W $lng_ <hr> $raio";
 
 
 
@@ -50,79 +79,81 @@ class coordenadasController extends Controller
             ->orderBy('distancia_km', 'asc')
             ->get();
 
-            
-           return view('somos.pedacos.mapa', compact('resultados'));
+
+        return view('somos.pedacos.mapa', compact('resultados'));
     }
 
 
 
 
-    private function prepararCoordenadaParaSQL($coordenada) {
-    // Remove espaços antes/depois
-    $coordenada = trim($coordenada);
+    private function prepararCoordenadaParaSQL($coordenada)
+    {
+        // Remove espaços antes/depois
+        $coordenada = trim($coordenada);
 
-    // Converte aspas tipográficas para as simples e duplas normais
-    $coordenada = str_replace(['′', '’', '‘'], "'", $coordenada);
-    $coordenada = str_replace(['″', '“', '”'], '"', $coordenada);
+        // Converte aspas tipográficas para as simples e duplas normais
+        $coordenada = str_replace(['′', '’', '‘'], "'", $coordenada);
+        $coordenada = str_replace(['″', '“', '”'], '"', $coordenada);
 
-    // Substitui espaços duplicados por um único espaço
-    $coordenada = preg_replace('/\s+/', ' ', $coordenada);
+        // Substitui espaços duplicados por um único espaço
+        $coordenada = preg_replace('/\s+/', ' ', $coordenada);
 
-    // Escapa aspas simples para evitar erro na query
-    $coordenada = str_replace("'", "\\'", $coordenada);
+        // Escapa aspas simples para evitar erro na query
+        $coordenada = str_replace("'", "\\'", $coordenada);
 
-    // Adiciona aspas simples para passar na query
-    return "'" . $this->coordenadaParaDecimal($coordenada) . "'";
-}
-
-
-
-
-private function coordenadaParaDecimal($coordenada) {
-    // Remove espaços extras
-    $coordenada = trim($coordenada);
-
-    // Caso já esteja no formato decimal, apenas retorna
-    if (preg_match('/^[-]?\d+\.\d+$/', $coordenada)) {
-        return (float)$coordenada;
+        // Adiciona aspas simples para passar na query
+        return "'" . $this->coordenadaParaDecimal($coordenada) . "'";
     }
 
-    // Normaliza as coordenadas removendo o símbolo de grau (°), minutos (′), segundos (″)
-    // e tratando os hemisférios (N/S/E/W).
-    $coordenada = str_replace(['°', '′', '″', 'N', 'S', 'E', 'W'], [' ', ' ', ' ', '', '', '', ''], $coordenada);
-    $coordenada = trim($coordenada); // Remove espaços extras
 
-    // Verifica se tem "S" ou "W" para adicionar o sinal negativo
-    $sinal = 1; // Padrão: Norte ou Leste
-    if (stripos($coordenada, 'S') !== false || stripos($coordenada, 'W') !== false) {
-        $sinal = -1;
+
+
+    private function coordenadaParaDecimal($coordenada)
+    {
+        // Remove espaços extras
+        $coordenada = trim($coordenada);
+
+        // Caso já esteja no formato decimal, apenas retorna
+        if (preg_match('/^[-]?\d+\.\d+$/', $coordenada)) {
+            return (float)$coordenada;
+        }
+
+        // Normaliza as coordenadas removendo o símbolo de grau (°), minutos (′), segundos (″)
+        // e tratando os hemisférios (N/S/E/W).
+        $coordenada = str_replace(['°', '′', '″', 'N', 'S', 'E', 'W'], [' ', ' ', ' ', '', '', '', ''], $coordenada);
+        $coordenada = trim($coordenada); // Remove espaços extras
+
+        // Verifica se tem "S" ou "W" para adicionar o sinal negativo
+        $sinal = 1; // Padrão: Norte ou Leste
+        if (stripos($coordenada, 'S') !== false || stripos($coordenada, 'W') !== false) {
+            $sinal = -1;
+        }
+
+        // Remove "S", "W" caso tenha ficado
+        $coordenada = str_replace(['S', 'W'], '', $coordenada);
+
+        // Verifica o formato e converte para decimal
+        $partes = preg_split('/\s+/', $coordenada);
+
+        if (count($partes) == 1) {
+            // Caso em formato de grau decimal
+            return $sinal * (float)$partes[0];
+        } elseif (count($partes) == 2) {
+            // Caso em formato grau/minuto decimal
+            $graus = (float)$partes[0];
+            $minutos = (float)$partes[1];
+            return $sinal * ($graus + $minutos / 60);
+        } elseif (count($partes) == 3) {
+            // Caso em formato grau/minuto/segundo
+            $graus = (float)$partes[0];
+            $minutos = (float)$partes[1];
+            $segundos = (float)$partes[2];
+            return $sinal * ($graus + ($minutos / 60) + ($segundos / 3600));
+        } else {
+            // Caso em formato não reconhecido
+            return null;
+        }
     }
-
-    // Remove "S", "W" caso tenha ficado
-    $coordenada = str_replace(['S', 'W'], '', $coordenada);
-
-    // Verifica o formato e converte para decimal
-    $partes = preg_split('/\s+/', $coordenada);
-
-    if (count($partes) == 1) {
-        // Caso em formato de grau decimal
-        return $sinal * (float)$partes[0];
-    } elseif (count($partes) == 2) {
-        // Caso em formato grau/minuto decimal
-        $graus = (float)$partes[0];
-        $minutos = (float)$partes[1];
-        return $sinal * ($graus + $minutos / 60);
-    } elseif (count($partes) == 3) {
-        // Caso em formato grau/minuto/segundo
-        $graus = (float)$partes[0];
-        $minutos = (float)$partes[1];
-        $segundos = (float)$partes[2];
-        return $sinal * ($graus + ($minutos / 60) + ($segundos / 3600));
-    } else {
-        // Caso em formato não reconhecido
-        return null;
-    }
-}
 
 
 
@@ -236,11 +267,4 @@ private function coordenadaParaDecimal($coordenada) {
             'lng_max' => $lng + $lng_diff,
         ];
     }
-
-
-
-
-
-
-
 }
