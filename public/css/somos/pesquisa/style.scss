@@ -1,0 +1,142 @@
+@import "./../css/reset";
+@import "./../css/cssBase/menu/menu";
+@import "./../css/cssBase/footer/style";
+@import "./../css/mixins/form";
+
+@mixin afastamento() {
+    margin-left: 1.953125vw;
+    //border: 1px solid red;
+}
+
+@mixin Zindex() {
+    z-index: 1000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    width: 100vw;
+    padding-left: 3.90625vw;
+    padding-right: 3.90625vw;
+    padding-top: 3.3203125vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: "MontThin";
+
+    .closeDiv {
+        position: absolute;
+        right: -8px;
+        top: -14px;
+        width: 2vw;
+        border: 1px solid orange;
+        z-index: 3000000;
+        border-radius: 4vw;
+        display: flex;
+        justify-content: center;
+        background-color: orange;
+        color: white;
+        font-weight: bold;
+        padding: 0.3vw;
+    }
+
+    .decoracaoLinks,
+    #cidades,
+    .Periodo {
+        width: 27.44140625vw;
+        display: flex;
+        height: 6.73828125vw;
+        align-items: center;
+        justify-content: center;
+        font-family: "anton";
+        box-shadow: 0.68359375vw 0.68359375vw 14px rgba(0, 0, 0, 0.549);
+        background-image: linear-gradient(to top, lightblue, white);
+        color: $azul2;
+        border: 0.09765625vw solid #99d5e6;
+        border-radius: 0.5859375vw;
+        margin-bottom: 1.171875vw;
+    }
+
+    .submenu {
+        position: absolute;
+        left: 25vw;
+        top: 45%;
+        transform: translateY(-50%);
+        @include Zindex();
+    }
+
+    #telaMae {
+        display: flex;
+        border: 1px solid $azul2;
+        padding: 3vw;
+
+        #MinasPesquisas {
+            @include afastamento();
+
+            #date1,
+            #date2 {
+                border: 1px solid red;
+                @include input();
+            }
+
+            #cidades {
+                @include select();
+            }
+        }
+
+        ul {
+            .itemList {
+                li {
+                    @include afastamento();
+
+                    ul {
+                        @include afastamento();
+                    }
+                }
+            }
+        }
+    }
+
+    #meu_Mapa {
+        display: block;
+        height: 50vh;
+        width: 50vw;
+        min-width: 50vw;
+
+        input {
+            @include input();
+        }
+
+        #tipo1,
+        #tipo2,
+        #tipo3 {
+            @include Zindex();
+            @include formulario();
+            background-image: linear-gradient(to top, lightblue, white);
+            width: 40vw;
+            height: 40vh;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 7px 7px 10px 5px #00000017;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: stretch;
+            align-items: center;
+
+            div {
+                @include label();
+            }
+        }
+    }
+}

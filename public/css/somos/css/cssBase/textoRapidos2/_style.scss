@@ -1,0 +1,88 @@
+@media (min-width: 769px) {
+  #textRapido2 {
+    width: 92.1875vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-left: 8.30078125vw;
+    padding-right: 8.30078125vw;
+    padding-top: 0.9765625vw;
+    padding-bottom: 0.9765625vw;
+    height: 16.40625vw;
+    background-image: url($url + "img/textoRapido2/fundo.svg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+
+    p {
+      width: 46%;
+      line-height: 157%;
+      color: WHITE;
+      font-size: 1.26953125vw;
+      font-family: "MontThin";
+      line-height: 132%;
+    }
+
+    #btn {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translatey(-50%);
+
+      margin-bottom: 5.078125vw;
+      background: linear-gradient(to bottom, #ffc12f 0%, #ff8c2f 100%);
+      padding-top: 0.78125vw;
+      padding-bottom: 0.78125vw;
+      padding-right: 2.05078125vw;
+      padding-left: 2.05078125vw;
+      border-radius: 0.390625vw;
+      font-size: 1.1328125vw;
+      font-family: "anton";
+      color: white;
+    }
+  }
+}
+
+@media (max-width: 768px) { 
+  #textRapido2 {
+    width: 99.1875vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-left: 8.30078125vw;
+    padding-right: 8.30078125vw;
+    padding-top: 3.9765625vw;
+    padding-bottom: 2.9765625vw;
+    height: auto;
+    overflow: auto;
+    background-image: url($url + "img/textoRapido2/fundo.svg");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vw;
+
+    p {
+      width: 100%;
+      font-family: "MontThin";
+      font-size: 2.9853515625vw;
+      line-height: 1.65;
+      text-align: justify;
+      color: white;
+    }
+
+    #btn {
+      position: relative;
+      margin-bottom: 5.078125vw;
+      background: linear-gradient(to bottom, #ffc12f 0%, #ff8c2f 100%);
+      padding-top: 0.78125vw;
+      padding-bottom: 0.78125vw;
+      padding-right: 2.05078125vw;
+      padding-left: 2.05078125vw;
+      border-radius: 1.390625vw;
+      font-size: 3.3328125vw;
+      font-family: "anton";
+      color: white;
+    }
+  }
+}

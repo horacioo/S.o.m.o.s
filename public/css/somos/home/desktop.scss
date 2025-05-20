@@ -2,14 +2,34 @@
 @import "../css/cssBase/menu/menu";
 @import "../css/cssBase/card/style";
 @import "../css/cssBase/textRapido/style.css";
+@import "../css/cssBase/textoRapidos2/style";
+@import "../css/cssBase/footer/style";
 body {
     width: 100vw;
     padding-left: 3.90625vw;
     padding-right: 3.90625vw;
     padding-top: 3.3203125vw;
-    background-image: url($url + "img/home/fundao.svg");
+    //background-image: url($url + "img/home/fundao.svg");
     background-size: cover;
     background-repeat: no-repeat;
+
+
+
+    #teste {
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-image: url($url + "img/home/fundao.svg"); 
+        background-size: cover;
+        background-position: center;
+        z-index: 1; 
+        will-change: transform; 
+    }
+
+
+
 
     header {
         background-image: url($url + "img/home/topo.jpg");
@@ -102,7 +122,7 @@ body {
     #descricaoProjeto {
         margin-top: 3.02734375vw;
         font-size: 2.9853515625vw;
-       
+
         font-family: "MontThin";
         color: $azulTexto;
 
@@ -113,15 +133,26 @@ body {
         //display: flex;
         //position: relative;
         //flex-direction: row;
-        p { line-height: 1.65;
-            
+        p {
+            line-height: 1.65;
         }
 
         #imgCentro {
-            width:100%;
+            width: 100%;
             //height: auto;
             //top: 0;
             //right: 0;
         }
     }
 }
+
+
+
+
+   
+    body >*:not(#teste) {
+        /* Seus atributos CSS aqui */
+        z-index: 2;
+        position: relative;
+    }
+    

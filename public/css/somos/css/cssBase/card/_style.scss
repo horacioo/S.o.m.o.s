@@ -15,6 +15,7 @@
         align-items: center;
         border-radius: 1.0751953125vw;
         border: 0.1953125vw solid $azul2;
+        opacity: 0;
 
         background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0% / 0.4) 90%);
 
@@ -53,6 +54,7 @@
         border: 0.1953125vw solid $azul2;
         background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0% / 0.4) 90%);
         margin-bottom: 3vh;
+        opacity: 0;
 
         h2 {
             font-family: "Anton";
@@ -80,34 +82,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@keyframes HoverBtn {
+    0%   { transform: scale(1);    }
+    20%  { transform: scale(0.8);  }
+    70%  { transform: scale(1.2);  }
+    100% {  transform: scale(1);   }
+}
 
 
 
@@ -133,10 +113,14 @@
                 width: 4.39453125vw;
                 ///margin-right: 3.043359375vw;
                 padding-top: 12.634765625vw;
+
                 img {
                     width: 4.39453125vw;
                     height: auto;
                     margin-bottom: 0.6904296875vw;
+                    &:hover {
+                        animation:  HoverBtn 1200ms forwards; 
+                    }
                 }
             }
 
@@ -168,6 +152,9 @@
                 display: flex;
                 justify-content: center;
                 gap: 2vw;
+                &:hover {
+                        animation:  HoverBtn 1200ms forwards; 
+                    }
 
                 img {
                     width: 9.39453125vw;
@@ -180,5 +167,37 @@
                 @include Card();
             }
         }
+    }
+}
+
+.aparece {
+    animation: aparece 1.5s forwards;
+}
+
+@keyframes destaque {
+    0% {
+        border: none;
+        transform: scale(0);
+    }
+    50% {
+        border: 1px solid red;
+        transform: scale(1.6);
+    }
+    100% {
+        border: none;
+        transform: scale(0);
+    }
+}
+
+@keyframes aparece {
+    0% {
+        position: relative;
+        right: -10%;
+        opacity: 0;
+    }
+    100% {
+        position: relative;
+        right: 0;
+        opacity: 1;
     }
 }

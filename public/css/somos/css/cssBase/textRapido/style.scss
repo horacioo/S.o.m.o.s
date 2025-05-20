@@ -1,9 +1,10 @@
 @media (min-width: 769px) {
     #textoRapidos {
         display: flex;
-        margin-top: 3.02734375vw;
-        margin-bottom: 8.10546875vw;
+        margin-top: 5.02734375vw;
+        //margin-bottom: 8.10546875vw;
         gap: 1.5625vw;
+        height: 26.85546875vw;
 
         picture {
             width: 23.828125vw;
@@ -16,9 +17,11 @@
 
         #texto {
             width: 65.8203125vw;
+            min-height: 20.703125vw;
             height: auto;
-            overflow: auto;
             text-align: justify;
+            position: relative;
+            overflow: auto;
             h2 {
                 color: #1c6073;
                 font-size: 2.1484375vw;
@@ -30,6 +33,22 @@
                 font-family: "MontThin";
                 color: #1c6073;
                 line-height: 132%;
+            }
+            a {
+                position: absolute;
+                top: 17.28515625vw;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-bottom: 5.078125vw;
+                background: linear-gradient(to bottom, #ffc12f 0%, #ff8c2f 100%);
+                padding-top: 0.78125vw;
+                padding-bottom: 0.78125vw;
+                padding-right: 2.05078125vw;
+                padding-left: 2.05078125vw;
+                border-radius: 0.390625vw;
+                font-size: 1.1328125vw;
+                font-family: "anton";
+                color: white;
             }
         }
     }
@@ -57,6 +76,8 @@
         }
 
         #texto {
+            padding-bottom: 10vw;
+            position: relative;
             width: 100%;
             height: auto;
             overflow: auto;
@@ -74,6 +95,23 @@
                 color: #1c6073;
                 font-size: 2.9853515625vw;
                 line-height: 1.65;
+            }
+
+            a {
+                position: absolute;
+                bottom: -5.028515625vw;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-bottom: 5.078125vw;
+                background: linear-gradient(to bottom, #ffc12f 0%, #ff8c2f 100%);
+                padding-top: 0.78125vw;
+                padding-bottom: 0.78125vw;
+                padding-right: 2.05078125vw;
+                padding-left: 2.05078125vw;
+                border-radius: 1.390625vw;
+                font-size: 3.3328125vw;
+                font-family: "anton";
+                color: white;
             }
         }
     }

@@ -1,5 +1,3 @@
-$azulTexto:#2C4A6F;
-$azul2:#1C6073;
 
 $url:"http://127.0.0.1:8000/";
 
@@ -14,6 +12,9 @@ $url:"http://127.0.0.1:8000/";
   font-family: "MontThin";
   src: url($url+"fonts/montserrat/Montserrat-Thin.ttf") format("truetype");
 }
+
+@import "./cssBase/scrollBar.scss";
+
 /* Reset básico de CSS */
 
 /* Remove todas as margens e preenchimentos */
@@ -101,12 +102,26 @@ html, body {
   width: 100%;
   height: 100%;
   line-height: 1.5;
-  font-family: Arial, sans-serif;
-  max-width: 99vw;
+  ///ont-family: Arial, sans-serif;
+  max-width: 99.8vw;
   overflow-x: hidden;
 }
 
 /* Normaliza o scroll */
 html {
-  scroll-behavior: smooth;
+ // scroll-behavior: smooth;
+}
+
+
+
+
+
+::selection {
+  background: $azul2;
+  color: white;
+}
+
+::-moz-selection { /* Para compatibilidade com Firefox */
+ background: $azul2;
+  color: white;
 }

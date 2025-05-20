@@ -8,6 +8,29 @@
   font-family: "MontThin";
   src: url("http://127.0.0.1:8000/fonts/montserrat/Montserrat-Thin.ttf") format("truetype");
 }
+html {
+  scrollbar-color: #87cefa #e0ffff; /* Cores válidas (azul claro e azul bebê como exemplo) */
+  scrollbar-width: 4.8828125vw; /* Largura da barra de rolagem */
+}
+
+/* Remova ou corrija o seletor incorreto dentro de html */
+::-webkit-scrollbar {
+  width: 20px; /* Largura para navegadores WebKit */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 /* Reset básico de CSS */
 /* Remove todas as margens e preenchimentos */
 *,
@@ -94,42 +117,146 @@ html, body {
   width: 100%;
   height: 100%;
   line-height: 1.5;
-  font-family: Arial, sans-serif;
-  max-width: 99vw;
+  max-width: 99.8vw;
   overflow-x: hidden;
 }
 
 /* Normaliza o scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-nav ul {
-  background-color: red;
-  align-items: center;
-  height: 3.90625vw;
-  margin-top: 3.02734375vw;
-  display: flex;
-  gap: 2.9326171875vw;
-  padding-left: 2.9326171875vw;
-  background: linear-gradient(to bottom, #558ED5 0%, #2C4A6F 100%);
-  font-family: "Anton";
+::-moz-selection {
+  background: #1C6073;
   color: white;
-  font-size: 1.13671875vw;
-  border-radius: 0.390625vw;
 }
-nav ul li:hover {
-  animation: scale 0.2s forwards;
+::selection {
+  background: #1C6073;
+  color: white;
 }
 
-@keyframes scale {
+::-moz-selection { /* Para compatibilidade com Firefox */
+  background: #1C6073;
+  color: white;
+}
+
+@media (min-width: 769px) {
+  #hamburguer {
+    position: fixed;
+    top: 2vw;
+    left: 2vw;
+    width: 7vw;
+    height: auto;
+    display: none;
+  }
+  nav ul {
+    background-color: red;
+    align-items: center;
+    height: 3.90625vw;
+    margin-top: 3.02734375vw;
+    display: flex;
+    gap: 2.9326171875vw;
+    padding-left: 2.9326171875vw;
+    background: linear-gradient(to bottom, #558ed5 0%, #2c4a6f 100%);
+    font-family: "Anton";
+    color: white;
+    font-size: 1.13671875vw;
+    border-radius: 0.390625vw;
+  }
+  nav ul li:hover {
+    animation: scale 0.2s forwards;
+  }
+  @keyframes scale {
+    0% {
+      transform: scale(1);
+      color: #ffffff;
+    }
+    100% {
+      transform: scale(1.3);
+      color: #ff8c2f;
+    }
+  }
+}
+@media (max-width: 768.4px) {
+  #hamburguer {
+    position: fixed;
+    top: 2vw;
+    left: 2vw;
+    width: 7vw;
+    height: auto;
+  }
+  nav {
+    z-index: 30000000000000000000;
+    color: white;
+    background-color: #2C4A6F;
+    position: fixed;
+    max-width: 40vw;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    padding: 7vw;
+    opacity: 0;
+  }
+  nav ul li {
+    margin-bottom: 1vw;
+    padding: 2vw;
+    text-transform: capitalize;
+    background-color: rgba(255, 255, 255, 0.401);
+    border-radius: 0.7vw;
+  }
+  .showMenu {
+    animation: abreMenu 2s forwards;
+  }
+  .FechaMenu {
+    animation: fechaMenu 0.5s forwards;
+  }
+  .menunBackground {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 74, 111, 0.3254901961);
+    left: 0;
+    top: 0;
+    animation: fundo 5s forwards;
+  }
+  @keyframes fundo {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes abreMenu {
+    0% {
+      opacity: 0;
+      left: -50%;
+    }
+    100% {
+      opacity: 1;
+      left: 0;
+    }
+  }
+  @keyframes fechaMenu {
+    0% {
+      opacity: 1;
+      left: 0%;
+    }
+    100% {
+      opacity: 0;
+      left: -50vw;
+    }
+  }
+}
+@keyframes HoverBtn {
   0% {
     transform: scale(1);
-    color: #ffffff;
+  }
+  20% {
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.2);
   }
   100% {
-    transform: scale(1.3);
-    color: #FF8C2F;
+    transform: scale(1);
   }
 }
 @media (min-width: 769px) {
@@ -156,6 +283,9 @@ nav ul li:hover {
     height: auto;
     margin-bottom: 0.6904296875vw;
   }
+  #meusCards ul #links img:hover {
+    animation: HoverBtn 1200ms forwards;
+  }
 }
 @media (min-width: 769px) and (min-width: 769px) {
   #meusCards ul .card {
@@ -173,6 +303,7 @@ nav ul li:hover {
     align-items: center;
     border-radius: 1.0751953125vw;
     border: 0.1953125vw solid #1C6073;
+    opacity: 0;
     background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0%/0.4) 90%);
   }
   #meusCards ul .card h2 {
@@ -210,6 +341,7 @@ nav ul li:hover {
     border: 0.1953125vw solid #1C6073;
     background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0%/0.4) 90%);
     margin-bottom: 3vh;
+    opacity: 0;
   }
   #meusCards ul .card h2 {
     font-family: "Anton";
@@ -250,6 +382,9 @@ nav ul li:hover {
     justify-content: center;
     gap: 2vw;
   }
+  #meusCards ul #links:hover {
+    animation: HoverBtn 1200ms forwards;
+  }
   #meusCards ul #links img {
     width: 9.39453125vw;
     height: auto;
@@ -271,6 +406,7 @@ nav ul li:hover {
     align-items: center;
     border-radius: 1.0751953125vw;
     border: 0.1953125vw solid #1C6073;
+    opacity: 0;
     background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0%/0.4) 90%);
   }
   #meusCards ul .card h2 {
@@ -308,6 +444,7 @@ nav ul li:hover {
     border: 0.1953125vw solid #1C6073;
     background: linear-gradient(to bottom, #ffffff 0%, hwb(0 100% 0%/0.4) 90%);
     margin-bottom: 3vh;
+    opacity: 0;
   }
   #meusCards ul .card h2 {
     font-family: "Anton";
@@ -326,14 +463,246 @@ nav ul li:hover {
     height: auto;
   }
 }
+.aparece {
+  animation: aparece 1.5s forwards;
+}
+
+@keyframes destaque {
+  0% {
+    border: none;
+    transform: scale(0);
+  }
+  50% {
+    border: 1px solid red;
+    transform: scale(1.6);
+  }
+  100% {
+    border: none;
+    transform: scale(0);
+  }
+}
+@keyframes aparece {
+  0% {
+    position: relative;
+    right: -10%;
+    opacity: 0;
+  }
+  100% {
+    position: relative;
+    right: 0;
+    opacity: 1;
+  }
+}
+@media (min-width: 769px) {
+  #textRapido2 {
+    width: 92.1875vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-left: 8.30078125vw;
+    padding-right: 8.30078125vw;
+    padding-top: 0.9765625vw;
+    padding-bottom: 0.9765625vw;
+    height: 16.40625vw;
+    background-image: url("http://127.0.0.1:8000/img/textoRapido2/fundo.svg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+  }
+  #textRapido2 p {
+    width: 46%;
+    line-height: 157%;
+    color: WHITE;
+    font-size: 1.26953125vw;
+    font-family: "MontThin";
+    line-height: 132%;
+  }
+  #textRapido2 #btn {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translatey(-50%);
+    margin-bottom: 5.078125vw;
+    background: linear-gradient(to bottom, #ffc12f 0%, #ff8c2f 100%);
+    padding-top: 0.78125vw;
+    padding-bottom: 0.78125vw;
+    padding-right: 2.05078125vw;
+    padding-left: 2.05078125vw;
+    border-radius: 0.390625vw;
+    font-size: 1.1328125vw;
+    font-family: "anton";
+    color: white;
+  }
+}
+@media (max-width: 768px) {
+  #textRapido2 {
+    width: 99.1875vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-left: 8.30078125vw;
+    padding-right: 8.30078125vw;
+    padding-top: 3.9765625vw;
+    padding-bottom: 2.9765625vw;
+    height: auto;
+    overflow: auto;
+    background-image: url("http://127.0.0.1:8000/img/textoRapido2/fundo.svg");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vw;
+  }
+  #textRapido2 p {
+    width: 100%;
+    font-family: "MontThin";
+    font-size: 2.9853515625vw;
+    line-height: 1.65;
+    text-align: justify;
+    color: white;
+  }
+  #textRapido2 #btn {
+    position: relative;
+    margin-bottom: 5.078125vw;
+    background: linear-gradient(to bottom, #ffc12f 0%, #ff8c2f 100%);
+    padding-top: 0.78125vw;
+    padding-bottom: 0.78125vw;
+    padding-right: 2.05078125vw;
+    padding-left: 2.05078125vw;
+    border-radius: 1.390625vw;
+    font-size: 3.3328125vw;
+    font-family: "anton";
+    color: white;
+  }
+}
+footer {
+  margin-top: 2.9296875vw;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 17.3828125vw;
+  display: flex;
+  background: linear-gradient(to bottom, #6e95c6 0%, #5c88be 100%);
+  padding: 2vw;
+  display: flex;
+  gap: 3.90625vw;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+footer ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9765625vw;
+  width: 15vw;
+}
+footer ul li {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+footer ul li:hover {
+  animation: zoom 0.2s forwards;
+}
+footer ul li a {
+  text-transform: capitalize;
+  color: #1c6073;
+}
+
+.home {
+  position: relative;
+}
+.home::before {
+  content: " ";
+  background-image: url("http://127.0.0.1:8000/img/footer/icons/home.svg");
+  width: 1.1296875vw;
+  height: 1.1296875vw;
+  display: block;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  left: -1.3vw;
+  top: -23%;
+}
+
+.phone {
+  position: relative;
+}
+.phone::before {
+  content: " ";
+  background-image: url("http://127.0.0.1:8000/img/footer/icons/phone.svg");
+  width: 1.1296875vw;
+  height: 1.1296875vw;
+  display: block;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  left: -1.3vw;
+  top: -23%;
+}
+
+.email {
+  position: relative;
+}
+.email::before {
+  content: " ";
+  background-image: url("http://127.0.0.1:8000/img/footer/icons/email.svg");
+  width: 1.1296875vw;
+  height: 1.1296875vw;
+  display: block;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  left: -1.3vw;
+  top: -23%;
+}
+
+.insta {
+  position: relative;
+}
+.insta::before {
+  content: " ";
+  background-image: url("http://127.0.0.1:8000/img/footer/icons/instagram.svg");
+  width: 1.1296875vw;
+  height: 1.1296875vw;
+  display: block;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  left: -1.3vw;
+  top: -23%;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 body {
   width: 100vw;
   padding-left: 3.90625vw;
   padding-right: 3.90625vw;
   padding-top: 3.3203125vw;
-  background-image: url("http://127.0.0.1:8000/img/home/fundao.svg");
   background-size: cover;
   background-repeat: no-repeat;
+}
+body #teste {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("http://127.0.0.1:8000/img/home/fundao.svg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  will-change: transform;
 }
 body header {
   background-image: url("http://127.0.0.1:8000/img/home/topo.jpg");
@@ -430,4 +799,9 @@ body header #subtitulo {
   #descricaoProjeto #imgCentro {
     width: 100%;
   }
+}
+body > *:not(#teste) {
+  /* Seus atributos CSS aqui */
+  z-index: 2;
+  position: relative;
 }/*# sourceMappingURL=desktop.css.map */

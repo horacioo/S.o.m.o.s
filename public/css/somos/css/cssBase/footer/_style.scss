@@ -1,0 +1,90 @@
+@mixin icon($icone: 'home'){
+     content: " ";
+        background-image: url($url + "img/footer/icons/"+$icone+".svg");
+        width: 1.1296875vw;
+        height: 1.1296875vw;
+        display: block;
+        background-size: cover;
+        display: block;
+        position: absolute;
+        left: -1.3vw;
+        top: -23%;
+}
+
+
+footer {
+    margin-top: 2.9296875vw;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 17.3828125vw;
+    display: flex;
+    background: linear-gradient(to bottom, lighten($azulTexto, 30%) 0%, lighten($azulTexto, 25%) 100%);
+    padding: 2vw;
+
+    display: flex;
+    gap: 3.90625vw;
+    flex-direction: row;
+    justify-content: space-evenly;
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9765625vw;
+        width: 15vw;
+        li {
+            width: 100%;
+            display: block;
+            text-align: center;
+            &:hover{
+                animation: zoom 0.2s forwards;
+            }
+            a {
+                text-transform: capitalize;
+                color: #1c6073;
+            }
+        }
+    }
+}
+
+
+
+
+
+.home {
+    position: relative;
+    &::before {
+       @include icon('home');
+    }
+}
+
+.phone {
+    position: relative;
+    &::before {
+       @include icon('phone');
+    }
+}
+
+.email {
+    position: relative;
+    &::before {
+       @include icon('email');
+    }
+}
+
+.insta {
+    position: relative;
+    &::before {
+       @include icon('instagram');
+    }
+}
+
+
+
+
+
+@keyframes zoom {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.4);}
+    100% { transform: scale(1); }
+}

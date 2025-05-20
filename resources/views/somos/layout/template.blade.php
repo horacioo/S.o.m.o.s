@@ -12,18 +12,14 @@
 <body class="container">
 
 
-    <!--<header> /* include('somos.layout.partes.header') */  </header>-->
 
 
 
 
 
-    <!---<nav> /* @include('somos.layout.partes.menu') */ </nav>-->
-
-    <main class="container">
         <!-- Conteúdo principal -->
         @yield('content')
-    </main>
+    
 
 
 

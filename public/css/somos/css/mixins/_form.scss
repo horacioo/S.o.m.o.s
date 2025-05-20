@@ -1,0 +1,42 @@
+@mixin decoracaoBase() {
+    border: 1px solid rgb(155, 155, 155);
+    background-color: rgb(245, 245, 245);
+    color: grey;
+    padding: 0.7vw;
+    font-size: 0.8151875vw;
+    border-radius: 0.38828125vw;
+}
+
+@mixin formulario() {
+    padding: 0.99296875vw;
+    border: 1px solid rgb(230, 230, 230);
+    position: relative;
+    max-width: 100%;
+    .buttom {
+        @include btn();
+    }
+}
+
+@mixin label() {
+    ///border: 0.09765625vw solid rgb(86, 86, 86);
+    margin-bottom: 0.5vw;
+}
+
+@mixin select() {
+    @include decoracaoBase();
+}
+
+@mixin input() {
+    @include decoracaoBase();
+    margin-left: 0.71vw;
+}
+
+@mixin btn() {
+    background-color: orange;
+    color: #000000;
+    width: auto;
+    padding: 0.5vw;
+    display: inline-block;
+    border-radius: 0.2vw;
+    font-family: 'anton';
+}

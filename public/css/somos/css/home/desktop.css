@@ -7,6 +7,29 @@
   font-family: "MontThin";
   src: url("http://127.0.0.1:8000/fonts/montserrat/Montserrat-Thin.ttf") format("truetype");
 }
+html {
+  scrollbar-color: #87cefa #e0ffff; /* Cores válidas (azul claro e azul bebê como exemplo) */
+  scrollbar-width: 4.8828125vw; /* Largura da barra de rolagem */
+}
+
+/* Remova ou corrija o seletor incorreto dentro de html */
+::-webkit-scrollbar {
+  width: 20px; /* Largura para navegadores WebKit */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 /* Reset básico de CSS */
 /* Remove todas as margens e preenchimentos */
 *,
@@ -93,14 +116,23 @@ html, body {
   width: 100%;
   height: 100%;
   line-height: 1.5;
-  font-family: Arial, sans-serif;
-  max-width: 99vw;
+  max-width: 99.8vw;
   overflow-x: hidden;
 }
 
 /* Normaliza o scroll */
-html {
-  scroll-behavior: smooth;
+::-moz-selection {
+  background: #1C6073;
+  color: white;
+}
+::selection {
+  background: #1C6073;
+  color: white;
+}
+
+::-moz-selection { /* Para compatibilidade com Firefox */
+  background: #1C6073;
+  color: white;
 }
 
 body {

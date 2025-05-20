@@ -17,10 +17,20 @@
         jQuery(".form").hide();
         jQuery("#tipo3").show();
     }
+
+
+
+    jQuery('.closeDiv').click(function() {
+            console.log("só teste");
+            jQuery(this).closest('.form').fadeOut();
+        });
+        
+
 </script>
 
 
-<div class="form" id="tipo1">
+<div class="form " id="tipo1">
+    <span class="closeDiv">X</span>
     <div class="coordenada1" id="coord1"> Coord 1 <input class="input1" type="text" id="grauDecimal1"></div>
     <div class="coordenada2" id="coord2">Coord 2 <input class="input2" type="text" id="grauDecimal2"> </div>
     <div class="buttom" id="Query1">Pesquisar</div>
@@ -31,6 +41,7 @@
 
 
 <div class="form" id="tipo2">
+    <span class="closeDiv">X</span>
     <div id="coord1">Coord 1<input class="input1" type="text" id="graudDecimalQuery1"></div>
     <div id="coord2">Coord 2<input class="input2" type="text" id="graudDecimalQuery2"></div>
     <div class="buttom" id="Query1">Pesquisar</div>
@@ -38,7 +49,8 @@
 
 
 
-<div class="form" id="tipo3">
+<div class="form " id="tipo3">
+    <span class="closeDiv">X</span>
     <div id="coord1">Coord 1 <input class="input1" type="text" id="grauDecimalSegundo1"></div>
     <div id="coord2">Coord 2 <input class="input2" type="text" id="grauDecimalSegundo2"></div>
     <div class="buttom" id="Query1">Pesquisar</div>
@@ -47,8 +59,11 @@
 
 
 
+
+
 <script>
     jQuery(".buttom").click(function() {
+        jQuery('ul li ul, ul li div').hide();
         var container = jQuery(this).closest(".form");
         var lat = container.find('.input1').val();
         var lng = container.find('.input2').val();
@@ -57,17 +72,25 @@
 
         tipo = window.sessionStorage.getItem('tipo');
 
-        if(tipo == 2){
-            console.log("entrada "+lat);  lat = dmToDecimal(lat); console.log("saida "+lat);
-            console.log("entrada "+lng);  lng = dmToDecimal(lng); console.log("saida "+lng);
+        if (tipo == 2) {
+            console.log("entrada " + lat);
+            lat = dmToDecimal(lat);
+            console.log("saida " + lat);
+            console.log("entrada " + lng);
+            lng = dmToDecimal(lng);
+            console.log("saida " + lng);
         }
 
-        if(tipo == 3){
-            console.log("entrada3 "+lat);  lat = dmsToDecimal(lat); console.log("saida3 "+lat);
-            console.log("entrada3 "+lng);  lng = dmsToDecimal(lng); console.log("saida3 "+lng);
+        if (tipo == 3) {
+            console.log("entrada3 " + lat);
+            lat = dmsToDecimal(lat);
+            console.log("saida3 " + lat);
+            console.log("entrada3 " + lng);
+            lng = dmsToDecimal(lng);
+            console.log("saida3 " + lng);
         }
 
-        
+
 
         var areaSelecionada = {
             lat: lat,
@@ -86,27 +109,27 @@
 
 <script>
     function dmsToDecimal(dmsString) {
-  const regex = /^([+-]?)(\d{1,3})[°\s]+(\d{1,2})[′'\s]+([\d.]+)["″\s]*([NSEW])?$/i;
-  const match = dmsString.trim().match(regex);
+        const regex = /^([+-]?)(\d{1,3})[°\s]+(\d{1,2})[′'\s]+([\d.]+)["″\s]*([NSEW])?$/i;
+        const match = dmsString.trim().match(regex);
 
-  if (!match) return NaN;
+        if (!match) return NaN;
 
-  const sign = match[1] === '-' ? -1 : 1;
-  const degrees = parseInt(match[2], 10);
-  const minutes = parseInt(match[3], 10);
-  const seconds = parseFloat(match[4]);
-  const direction = match[5] ? match[5].toUpperCase() : null;
+        const sign = match[1] === '-' ? -1 : 1;
+        const degrees = parseInt(match[2], 10);
+        const minutes = parseInt(match[3], 10);
+        const seconds = parseFloat(match[4]);
+        const direction = match[5] ? match[5].toUpperCase() : null;
 
-  let decimal = degrees + minutes / 60 + seconds / 3600;
+        let decimal = degrees + minutes / 60 + seconds / 3600;
 
-  if (direction === 'S' || direction === 'W') {
-    decimal *= -1;
-  } else {
-    decimal *= sign;
-  }
+        if (direction === 'S' || direction === 'W') {
+            decimal *= -1;
+        } else {
+            decimal *= sign;
+        }
 
-  return decimal;
-}
+        return decimal;
+    }
 </script>
 
 
@@ -136,13 +159,11 @@
         }
 
         return decimal;
-    } 
-    
-    </script>
+    }
+</script>
 
 
-  <script >
-
+<script>
     /*jQuery(".buttom").click(function(){
     var container = jQuery(this).closest(".form");
     var lat = container.find('.input1').val();

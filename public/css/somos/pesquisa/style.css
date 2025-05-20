@@ -1,0 +1,488 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Anton";
+  src: url("http://127.0.0.1:8000/fonts/Anton/AntonSC-regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "MontThin";
+  src: url("http://127.0.0.1:8000/fonts/montserrat/Montserrat-Thin.ttf") format("truetype");
+}
+html {
+  scrollbar-color: #87cefa #e0ffff; /* Cores válidas (azul claro e azul bebê como exemplo) */
+  scrollbar-width: 4.8828125vw; /* Largura da barra de rolagem */
+}
+
+/* Remova ou corrija o seletor incorreto dentro de html */
+::-webkit-scrollbar {
+  width: 20px; /* Largura para navegadores WebKit */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Reset básico de CSS */
+/* Remove todas as margens e preenchimentos */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove a formatação padrão de fontes */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dt, dd, figure, blockquote, pre {
+  font-size: 100%;
+  font-family: inherit;
+  line-height: 1;
+}
+
+/* Remove a formatação padrão de listas e links */
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove a borda padrão de inputs, selects e outros elementos de formulário */
+input,
+button,
+textarea,
+select {
+  border: none;
+  outline: none;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Normaliza os estilos de tabela */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Desativa o estilo de links visitados */
+a:visited {
+  color: inherit;
+}
+
+/* Remover a formatação de campo de formulário (botões, campos de texto, etc) */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  background-color: transparent;
+}
+
+/* Remover borda e sombras de elementos de foco */
+:focus {
+  outline: none;
+}
+
+/* Normaliza o comportamento de imagens */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove os espaços ao redor do iframe */
+iframe {
+  border: 0;
+  max-width: 100%;
+}
+
+/* Garantir que todos os elementos ocupem o espaço disponível (se necessário) */
+html, body {
+  width: 100%;
+  height: 100%;
+  line-height: 1.5;
+  max-width: 99.8vw;
+  overflow-x: hidden;
+}
+
+/* Normaliza o scroll */
+::-moz-selection {
+  background: #1C6073;
+  color: white;
+}
+::selection {
+  background: #1C6073;
+  color: white;
+}
+
+::-moz-selection { /* Para compatibilidade com Firefox */
+  background: #1C6073;
+  color: white;
+}
+
+@media (min-width: 769px) {
+  #hamburguer {
+    position: fixed;
+    top: 2vw;
+    left: 2vw;
+    width: 7vw;
+    height: auto;
+    display: none;
+  }
+  nav ul {
+    background-color: red;
+    align-items: center;
+    height: 3.90625vw;
+    margin-top: 3.02734375vw;
+    display: flex;
+    gap: 2.9326171875vw;
+    padding-left: 2.9326171875vw;
+    background: linear-gradient(to bottom, #558ed5 0%, #2c4a6f 100%);
+    font-family: "Anton";
+    color: white;
+    font-size: 1.13671875vw;
+    border-radius: 0.390625vw;
+  }
+  nav ul li:hover {
+    animation: scale 0.2s forwards;
+  }
+  @keyframes scale {
+    0% {
+      transform: scale(1);
+      color: #ffffff;
+    }
+    100% {
+      transform: scale(1.3);
+      color: #ff8c2f;
+    }
+  }
+}
+@media (max-width: 768.4px) {
+  #hamburguer {
+    position: fixed;
+    top: 2vw;
+    left: 2vw;
+    width: 7vw;
+    height: auto;
+  }
+  nav {
+    z-index: 30000000000000000000;
+    color: white;
+    background-color: #2C4A6F;
+    position: fixed;
+    max-width: 40vw;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    padding: 7vw;
+    opacity: 0;
+  }
+  nav ul li {
+    margin-bottom: 1vw;
+    padding: 2vw;
+    text-transform: capitalize;
+    background-color: rgba(255, 255, 255, 0.401);
+    border-radius: 0.7vw;
+  }
+  .showMenu {
+    animation: abreMenu 2s forwards;
+  }
+  .FechaMenu {
+    animation: fechaMenu 0.5s forwards;
+  }
+  .menunBackground {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 74, 111, 0.3254901961);
+    left: 0;
+    top: 0;
+    animation: fundo 5s forwards;
+  }
+  @keyframes fundo {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes abreMenu {
+    0% {
+      opacity: 0;
+      left: -50%;
+    }
+    100% {
+      opacity: 1;
+      left: 0;
+    }
+  }
+  @keyframes fechaMenu {
+    0% {
+      opacity: 1;
+      left: 0%;
+    }
+    100% {
+      opacity: 0;
+      left: -50vw;
+    }
+  }
+}
+footer {
+  margin-top: 2.9296875vw;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 17.3828125vw;
+  display: flex;
+  background: linear-gradient(to bottom, #6e95c6 0%, #5c88be 100%);
+  padding: 2vw;
+  display: flex;
+  gap: 3.90625vw;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+footer ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9765625vw;
+  width: 15vw;
+}
+footer ul li {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+footer ul li:hover {
+  animation: zoom 0.2s forwards;
+}
+footer ul li a {
+  text-transform: capitalize;
+  color: #1c6073;
+}
+
+.home {
+  position: relative;
+}
+.home::before {
+  content: " ";
+  background-image: url("http://127.0.0.1:8000/img/footer/icons/home.svg");
+  width: 1.1296875vw;
+  height: 1.1296875vw;
+  display: block;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  left: -1.3vw;
+  top: -23%;
+}
+
+.phone {
+  position: relative;
+}
+.phone::before {
+  content: " ";
+  background-image: url("http://127.0.0.1:8000/img/footer/icons/phone.svg");
+  width: 1.1296875vw;
+  height: 1.1296875vw;
+  display: block;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  left: -1.3vw;
+  top: -23%;
+}
+
+.email {
+  position: relative;
+}
+.email::before {
+  content: " ";
+  background-image: url("http://127.0.0.1:8000/img/footer/icons/email.svg");
+  width: 1.1296875vw;
+  height: 1.1296875vw;
+  display: block;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  left: -1.3vw;
+  top: -23%;
+}
+
+.insta {
+  position: relative;
+}
+.insta::before {
+  content: " ";
+  background-image: url("http://127.0.0.1:8000/img/footer/icons/instagram.svg");
+  width: 1.1296875vw;
+  height: 1.1296875vw;
+  display: block;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  left: -1.3vw;
+  top: -23%;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+body {
+  width: 100vw;
+  padding-left: 3.90625vw;
+  padding-right: 3.90625vw;
+  padding-top: 3.3203125vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "MontThin";
+}
+body .closeDiv {
+  position: absolute;
+  right: -8px;
+  top: -14px;
+  width: 2vw;
+  border: 1px solid orange;
+  z-index: 3000000;
+  border-radius: 4vw;
+  display: flex;
+  justify-content: center;
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  padding: 0.3vw;
+}
+body .decoracaoLinks,
+body #cidades,
+body .Periodo {
+  width: 27.44140625vw;
+  display: flex;
+  height: 6.73828125vw;
+  align-items: center;
+  justify-content: center;
+  font-family: "anton";
+  box-shadow: 0.68359375vw 0.68359375vw 14px rgba(0, 0, 0, 0.549);
+  background-image: linear-gradient(to top, lightblue, white);
+  color: #1C6073;
+  border: 0.09765625vw solid #99d5e6;
+  border-radius: 0.5859375vw;
+  margin-bottom: 1.171875vw;
+}
+body .submenu {
+  position: absolute;
+  left: 25vw;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+body #telaMae {
+  display: flex;
+  border: 1px solid #1C6073;
+  padding: 3vw;
+}
+body #telaMae #MinasPesquisas {
+  margin-left: 1.953125vw;
+}
+body #telaMae #MinasPesquisas #date1,
+body #telaMae #MinasPesquisas #date2 {
+  border: 1px solid red;
+  border: 1px solid rgb(155, 155, 155);
+  background-color: rgb(245, 245, 245);
+  color: grey;
+  padding: 0.7vw;
+  font-size: 0.8151875vw;
+  border-radius: 0.38828125vw;
+  margin-left: 0.71vw;
+}
+body #telaMae #MinasPesquisas #cidades {
+  border: 1px solid rgb(155, 155, 155);
+  background-color: rgb(245, 245, 245);
+  color: grey;
+  padding: 0.7vw;
+  font-size: 0.8151875vw;
+  border-radius: 0.38828125vw;
+}
+body #telaMae ul .itemList li {
+  margin-left: 1.953125vw;
+}
+body #telaMae ul .itemList li ul {
+  margin-left: 1.953125vw;
+}
+body #meu_Mapa {
+  display: block;
+  height: 50vh;
+  width: 50vw;
+  min-width: 50vw;
+}
+body #meu_Mapa input {
+  border: 1px solid rgb(155, 155, 155);
+  background-color: rgb(245, 245, 245);
+  color: grey;
+  padding: 0.7vw;
+  font-size: 0.8151875vw;
+  border-radius: 0.38828125vw;
+  margin-left: 0.71vw;
+}
+body #meu_Mapa #tipo1,
+body #meu_Mapa #tipo2,
+body #meu_Mapa #tipo3 {
+  z-index: 1000;
+  padding: 0.99296875vw;
+  border: 1px solid rgb(230, 230, 230);
+  position: relative;
+  max-width: 100%;
+  background-image: linear-gradient(to top, lightblue, white);
+  width: 40vw;
+  height: 40vh;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 7px 7px 10px 5px rgba(0, 0, 0, 0.0901960784);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+}
+body #meu_Mapa #tipo1 .buttom,
+body #meu_Mapa #tipo2 .buttom,
+body #meu_Mapa #tipo3 .buttom {
+  background-color: orange;
+  color: #000000;
+  width: auto;
+  padding: 0.5vw;
+  display: inline-block;
+  border-radius: 0.2vw;
+  font-family: "anton";
+}
+body #meu_Mapa #tipo1 div,
+body #meu_Mapa #tipo2 div,
+body #meu_Mapa #tipo3 div {
+  margin-bottom: 0.5vw;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,24 @@
+@import "./utils/cores";
+
+html {
+    scrollbar-color: #87cefa #e0ffff; /* Cores válidas (azul claro e azul bebê como exemplo) */
+    scrollbar-width: 4.8828125vw; /* Largura da barra de rolagem */
+}
+
+/* Remova ou corrija o seletor incorreto dentro de html */
+::-webkit-scrollbar {
+    width: 20px; /* Largura para navegadores WebKit */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
