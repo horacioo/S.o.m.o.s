@@ -12,130 +12,302 @@
     z-index: 1000;
 }
 
+@media (min-width: 769px) {
+    body {
+        width: 100vw;
+        padding-left: 3.90625vw;
+        padding-right: 3.90625vw;
+        padding-top: 3.3203125vw;
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: "MontThin";
 
-
-
-
-
-
-
-
-
-
-
-body {
-    width: 100vw;
-    padding-left: 3.90625vw;
-    padding-right: 3.90625vw;
-    padding-top: 3.3203125vw;
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: "MontThin";
-
-    .closeDiv {
-        position: absolute;
-        right: -8px;
-        top: -14px;
-        width: 2vw;
-        border: 1px solid orange;
-        z-index: 3000000;
-        border-radius: 4vw;
-        display: flex;
-        justify-content: center;
-        background-color: orange;
-        color: white;
-        font-weight: bold;
-        padding: 0.3vw;
-    }
-
-    .decoracaoLinks,
-    #cidades,
-    .Periodo {
-        width: 27.44140625vw;
-        display: flex;
-        height: 6.73828125vw;
-        align-items: center;
-        justify-content: center;
-        font-family: "anton";
-        box-shadow: 0.68359375vw 0.68359375vw 14px rgba(0, 0, 0, 0.549);
-        background-image: linear-gradient(to top, lightblue, white);
-        color: $azul2;
-        border: 0.09765625vw solid #99d5e6;
-        border-radius: 0.5859375vw;
-        margin-bottom: 1.171875vw;
-    }
-
-    .submenu {
-        position: absolute;
-        left: 25vw;
-        top: 45%;
-        transform: translateY(-50%);
-        @include Zindex();
-    }
-
-    #telaMae {
-        display: flex;
-        border: 1px solid $azul2;
-        padding: 3vw;
-
-        #MinasPesquisas {
-            @include afastamento();
-
-            #date1,
-            #date2 {
-                border: 1px solid red;
-                @include input();
-            }
-
-            #cidades {
-                @include select();
-            }
+        .closeDiv {
+            position: absolute;
+            right: -8px;
+            top: -14px;
+            width: 2vw;
+            border: 1px solid orange;
+            z-index: 3000000;
+            border-radius: 4vw;
+            display: flex;
+            justify-content: center;
+            background-color: orange;
+            color: white;
+            font-weight: bold;
+            padding: 0.3vw;
         }
 
-        ul {
-            .itemList {
-                li {
-                    @include afastamento();
+        .decoracaoLinks,
+        #cidades,
+        .Periodo {
+            width: 27.44140625vw;
+            display: flex;
+            height: 6.73828125vw;
+            align-items: center;
+            justify-content: center;
+            font-family: "anton";
+            box-shadow: 0.68359375vw 0.68359375vw 14px rgba(0, 0, 0, 0.549);
+            background-image: linear-gradient(to top, lightblue, white);
+            color: $azul2;
+            border: 0.09765625vw solid #99d5e6;
+            border-radius: 0.5859375vw;
+            margin-bottom: 1.171875vw;
+        }
 
-                    ul {
+        .submenu {
+            position: absolute;
+            left: 25vw;
+            top: 45%;
+            transform: translateY(-50%);
+            @include Zindex();
+        }
+
+        .submenu3 {
+            position: relative;
+            top: 99px;
+            left: 0vw;
+            width: 35vw;
+        }
+
+        #telaMae {
+            display: flex;
+            border: 1px solid $azul2;
+            padding: 3vw;
+
+            #MinasPesquisas {
+                @include afastamento();
+
+                #date1,
+                #date2 {
+                    border: 1px solid red;
+                    @include input();
+                }
+
+                #cidades {
+                    @include select();
+                }
+            }
+
+            ul {
+                .itemList {
+                    li {
                         @include afastamento();
+
+                        ul {
+                            @include afastamento();
+                        }
                     }
                 }
             }
         }
-    }
 
-    #meu_Mapa {
-        display: block;
-        height: 50vh;
-        width: 50vw;
-        min-width: 50vw;
+        #meu_Mapa {
+            display: block;
+            height: 50vh;
+            width: 50vw;
+            min-width: 50vw;
 
-        input {
-            @include input();
+            input {
+                @include input();
+            }
+
+            #tipo1,
+            #tipo2,
+            #tipo3 {
+                @include Zindex();
+                @include formulario();
+                background-image: linear-gradient(to top, lightblue, white);
+                width: 40vw;
+                height: 40vh;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                box-shadow: 7px 7px 10px 5px #00000017;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-content: stretch;
+                align-items: center;
+
+                div {
+                    @include label();
+                }
+            }
         }
+    }
+}
 
-        #tipo1,
-        #tipo2,
-        #tipo3 {
-            @include Zindex();
-            @include formulario();
-            background-image: linear-gradient(to top, lightblue, white);
-            width: 40vw;
-            height: 40vh;
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 7px 7px 10px 5px #00000017;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-content: stretch;
-            align-items: center;
+@media (max-width: 768.9px) {
+    $largura: "100%";
+    $altura: "39vw";
+    body {
+        font-family: "MontThin";
+        font-size: 2.9296875vw;
+        #telaMae {
+            //border: 1px solid rgb(207, 235, 0);
+            padding: 2vw;
+            display: grid;
+            padding-top: 10vh;
 
-            div {
-                @include label();
+            #tipo1,
+            #tipo2,
+            #tipo3 {
+                display: flex;
+                flex-direction: column;
+                gap: 2vw;
+                align-items: center;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 4000000000000;
+                background-color: white;
+
+                /************************************************/
+                width: 70%;
+                height: 80vh;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 1.048828125vw;
+
+                /************************************************/
+                .buttom {
+                    background-color: $azul2;
+                    color: white;
+                    width: 70%;
+                    padding: 2vw;
+                    text-align: center;
+                    border-radius: 1.46484375vw;
+                    //position: relative;
+                    //left: 50%;
+                    //transform: translateX(-50%);
+                }
+                border: 1px solid rgb(0, 95, 168);
+                input {
+                    @include formulario();
+                    font-family: "MontThin";
+                    font-size: 2.9296875vw;
+                }
+                select {
+                    font-family: "MontThin";
+                    font-size: 2.9296875vw;
+                    @include formulario();
+                }
+
+                padding: 4vw;
+            }
+
+            #meu_Mapa {
+                height: $altura;
+                width: $largura;
+                //border: 1px solid rgb(0, 38, 255);
+                #meuMapa {
+                    width: 100%;
+                    height: 70vh;
+                }
+            }
+
+            #MinasPesquisas {
+                height: $altura;
+                width: $largura !important;
+                position: relative;
+                li {
+                    //border: 1px solid red;
+                    padding: 1.5vw;
+                }
+
+                .topicos {
+                    //border: 1px solid rgb(252, 202, 0);
+                    .submenu {
+                        li {
+                            > span.decoracaoLinks {
+                            }
+
+                            ul {
+                                display: flex;
+                                flex-direction: column;
+                                width: 100%;
+
+                                li {
+                                    > span.decoracaoLinks {
+                                        display: flex;
+                                        flex-direction: column;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.opened {
+                        }
+                    }
+
+                    .submenu3 {
+                        width: 100%;
+                        padding: 0.5vw;
+                        position: relative;
+                        height: auto;
+                        overflow: auto;
+                        display: flex;
+                        flex-direction: column;
+                        //border: 1px solid rgb(218, 187, 63);
+                        //background-color: rgb(255, 0, 0);
+                        li {
+                            background-color: white;
+                        }
+                    }
+
+                    .hide {
+                    }
+                }
+
+                .area {
+                    .submenu {
+                        display: flex;
+                        flex-direction: column;
+                        .submenu {
+                            width: 100%;
+                            li {
+                                //border: 1px solid red;
+                            }
+                        }
+                    }
+                }
+
+                .periodo {
+                    .submenu {
+                        input {
+                            @include formulario();
+                        }
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+
+                #cidades {
+                    font-family: "MontThin";
+                    border: 1px solid red;
+                    font-size: 2.9296875vw;
+                    select {
+                        @include formulario();
+                    }
+                }
+
+                .submenu {
+                    @include Zindex();
+                    background-color: white;
+                    border-radius: 1.048828125vw;
+                    padding: 5vw;
+                    position: fixed;
+                    width: 70%;
+                    height: 80vh;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    display: flex;
+                }
             }
         }
     }

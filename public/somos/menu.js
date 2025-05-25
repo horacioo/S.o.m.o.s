@@ -9,7 +9,8 @@
             } else {
 
                 console.log("Tela menor ou igual a 768px");
-                jQuery('body').append('<div id="fundaoMenu"> fundo </div>');
+                jQuery('#fundaoMenu').remove();
+                jQuery('body').append('<div id="fundaoMenu">  </div>');
                 jQuery('nav').hide();
                 jQuery('#hamburguer').click(function() {
                     jQuery('#fundaoMenu').addClass('menunBackground');
